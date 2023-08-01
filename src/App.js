@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import GoToGoogleButton from './Components/GoToGoogleButton/GoToGoogleButton';
+import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
 const roundsToWin = 2;
@@ -69,7 +71,7 @@ const RockPaperScissors = () => {
 
   return (
     <div>
-      <h1>Rock, Paper, Scissors</h1>
+      <h1>Play Rock, Paper, Scissors Against AI</h1>
       <p>Make your choice: 
         <button onClick={() => play('rock')} disabled={disableButtons()}>Rock</button>
         <button onClick={() => play('paper')} disabled={disableButtons()}>Paper</button>
@@ -80,6 +82,9 @@ const RockPaperScissors = () => {
       {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
         <button onClick={resetGame}>Play Again</button>
       ) : null}
+      <p>
+        <GoToGoogleButton/>
+      </p>
     </div>
   );
 };
