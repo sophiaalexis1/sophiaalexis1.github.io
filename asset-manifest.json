@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/sophiaalexis1.github.io/static/css/main.cfd6b828.css",
-    "main.js": "/sophiaalexis1.github.io/static/js/main.b027d700.js",
-    "static/js/787.15230f2c.chunk.js": "/sophiaalexis1.github.io/static/js/787.15230f2c.chunk.js",
-    "index.html": "/sophiaalexis1.github.io/index.html",
-    "main.cfd6b828.css.map": "/sophiaalexis1.github.io/static/css/main.cfd6b828.css.map",
-    "main.b027d700.js.map": "/sophiaalexis1.github.io/static/js/main.b027d700.js.map",
-    "787.15230f2c.chunk.js.map": "/sophiaalexis1.github.io/static/js/787.15230f2c.chunk.js.map"
+    "main.css": "/static/css/main.cfd6b828.css",
+    "main.js": "/static/js/main.e98804cd.js",
+    "static/js/787.15230f2c.chunk.js": "/static/js/787.15230f2c.chunk.js",
+    "index.html": "/index.html",
+    "main.cfd6b828.css.map": "/static/css/main.cfd6b828.css.map",
+    "main.e98804cd.js.map": "/static/js/main.e98804cd.js.map",
+    "787.15230f2c.chunk.js.map": "/static/js/787.15230f2c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cfd6b828.css",
-    "static/js/main.b027d700.js"
+    "static/js/main.e98804cd.js"
   ]
 }
