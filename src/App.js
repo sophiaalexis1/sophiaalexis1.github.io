@@ -75,9 +75,12 @@ const RockPaperScissors = () => {
   };
 
   return (
-    <div>
+    <div className="game-container">
+      <div className='header-container'>
       <h1>Play Rock, Paper, Scissors Against AI</h1>
       <h3>Round {roundNumber} </h3>
+      </div>
+      <p>Player: {playerScore} | Computer: {computerScore}</p> {/* Display scores here */}
       <br></br>
       <p>
         <button onClick={() => play('rock')} disabled={disableButtons()}>
@@ -91,13 +94,12 @@ const RockPaperScissors = () => {
         </button>
       </p>
       <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p>
-      <p>Player: {playerScore} | Computer: {computerScore}</p>
       {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
         <button onClick={resetGame}>Play Again</button>
       ) : null}
-      <p>
+      <div className="exit-button-container">
         <GoToGoogleButton/>
-      </p>
+      </div>
     </div>
   );
 };
