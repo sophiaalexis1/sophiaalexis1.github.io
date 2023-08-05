@@ -9,6 +9,7 @@ const choices = ['rock', 'paper', 'scissors'];
 const roundsToWin = 2;
 
 const RockPaperScissors = () => {
+  const [roundNumber, setRoundNumber] = useState(1);
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [playerSelection, setPlayerSelection] = useState('');
@@ -27,6 +28,7 @@ const RockPaperScissors = () => {
       const roundResult = determineWinner(playerSelection, computerSelection);
       updateScore(roundResult);
       setResult(roundResult);
+      setRoundNumber(roundNumber + 1);
     }
   };
 
@@ -75,7 +77,7 @@ const RockPaperScissors = () => {
   return (
     <div>
       <h1>Play Rock, Paper, Scissors Against AI</h1>
-      <p>Make your choice: </p>
+      <h3>Round {roundNumber} </h3>
       <br></br>
       <p>
         <button onClick={() => play('rock')} disabled={disableButtons()}>
