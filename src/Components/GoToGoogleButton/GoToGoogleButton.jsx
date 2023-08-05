@@ -1,4 +1,5 @@
 import React from 'react';
+import exitButtonImage from './exit-button.png';
 
 const GoToGoogleButton = () => {
   const goToGoogle = () => {
@@ -6,7 +7,9 @@ const GoToGoogleButton = () => {
   };
 
   return (
-    <button onClick={goToGoogle}>Exit Game</button>
+    <button type="button" className="image-button" onClick={goToGoogle}>
+      <img src={exitButtonImage} alt="Exit"></img>
+    </button>
   );
 };
 
