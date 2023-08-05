@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import GoToGoogleButton from './Components/GoToGoogleButton/GoToGoogleButton';
+import PaperButtonImage from './Assets/Paper.jpeg';
+import RockButtonImage from './Assets/rock.png';
+import ScissorsButtonImage from './Assets/scissors.png';
 import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
@@ -72,10 +75,18 @@ const RockPaperScissors = () => {
   return (
     <div>
       <h1>Play Rock, Paper, Scissors Against AI</h1>
-      <p>Make your choice: 
-        <button onClick={() => play('rock')} disabled={disableButtons()}>Rock</button>
-        <button onClick={() => play('paper')} disabled={disableButtons()}>Paper</button>
-        <button onClick={() => play('scissors')} disabled={disableButtons()}>Scissors</button>
+      <p>Make your choice: </p>
+      <br></br>
+      <p>
+        <button onClick={() => play('rock')} disabled={disableButtons()}>
+        <img src={RockButtonImage} alt="Rock" style={{ width: '150px', height: 'auto' }}></img>
+        </button>
+        <button onClick={() => play('paper')} disabled={disableButtons()}>
+        <img src={PaperButtonImage} alt="Paper" style={{ width: '150px', height: 'auto' }}></img>
+        </button>
+        <button onClick={() => play('scissors')} disabled={disableButtons()}>
+        <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '150px', height: 'auto' }}></img>
+        </button>
       </p>
       <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p>
       <p>Player: {playerScore} | Computer: {computerScore}</p>

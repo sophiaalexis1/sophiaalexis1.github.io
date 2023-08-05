@@ -13,4 +13,12 @@ code {
     monospace;
 }
 
-
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 200px;
+  height: 1em;
+}
