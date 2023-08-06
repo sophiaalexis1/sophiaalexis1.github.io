@@ -7,6 +7,7 @@ import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
 const roundsToWin = 2;
+// const maxRounds=3;
 
 const RockPaperScissors = () => {
   const [roundNumber, setRoundNumber] = useState(1);
@@ -15,6 +16,7 @@ const RockPaperScissors = () => {
   const [playerSelection, setPlayerSelection] = useState('');
   const [computerSelection, setComputerSelection] = useState('');
   const [result, setResult] = useState('');
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true);
 
   const computerPlay = () => {
     return choices[Math.floor(Math.random() * choices.length)];
@@ -29,6 +31,22 @@ const RockPaperScissors = () => {
       updateScore(roundResult);
       setResult(roundResult);
       setRoundNumber(roundNumber + 1);
+      setIsPlayerTurn(false); 
+    // if (roundNumber <= maxRounds && isPlayerTurn) {
+    //   const computerSelection = computerPlay();
+    //   setPlayerSelection(playerSelection);
+    //   setComputerSelection(computerSelection);
+    //   const roundResult = determineWinner(playerSelection, computerSelection);
+    //   updateScore(roundResult);
+    //   setResult(roundResult);
+
+    //   if (roundNumber < maxRounds) {
+    //     setRoundNumber(roundNumber + 1);
+    //     setIsPlayerTurn(false);
+    //   } else {
+    //     setIsPlayerTurn(false);
+    //     announceWinner();
+    //   }
     }
   };
 
@@ -79,6 +97,8 @@ const RockPaperScissors = () => {
       <div className='header-container'>
       <h1>Play Rock, Paper, Scissors Against AI</h1>
       <h3>Round {roundNumber} </h3>
+      {/* {isPlayerTurn && <p>Take your pick:</p>} */}
+      <p>Take your pick:</p>
       </div>
       <p>Player: {playerScore} | Computer: {computerScore}</p> {/* Display scores here */}
       <br></br>
@@ -97,6 +117,11 @@ const RockPaperScissors = () => {
       {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
         <button onClick={resetGame}>Play Again</button>
       ) : null}
+      {/* <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p> */}
+      {/* <p>Player: {playerScore} | Computer: {computerScore}</p>
+      {roundNumber <= maxRounds && (playerScore >= maxRounds || computerScore >= maxRounds) ? (
+        <button onClick={resetGame}>Play Again</button>
+      ) : null} */}
       <div className="exit-button-container">
         <GoToGoogleButton/>
       </div>
