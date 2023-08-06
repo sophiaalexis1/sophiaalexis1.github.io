@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-button {
+/* button {
   border: none;
   background: none;
   padding: 0;
@@ -21,4 +21,4 @@ button {
   cursor: pointer;
   width: 200px;
   height: 1em;
-}
+} */

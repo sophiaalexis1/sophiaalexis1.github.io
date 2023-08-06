@@ -49,3 +49,11 @@
   margin-bottom: 20px; /* Adjust as needed */
 }
 
+.choice-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  flex-direction: row;
+  height: 100vh; /* This ensures the container takes up the full viewport height */
+}
+

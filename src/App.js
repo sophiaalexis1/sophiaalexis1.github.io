@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import GoToGoogleButton from './Components/GoToGoogleButton/GoToGoogleButton';
 import PaperButtonImage from './Assets/Paper.jpeg';
-import RockButtonImage from './Assets/rock.png';
+import RockButtonImage from './Assets/rock copy.png';
 import ScissorsButtonImage from './Assets/scissors.png';
+import AiImage from './Assets/AI thinking.png';
 import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
@@ -102,17 +103,26 @@ const RockPaperScissors = () => {
       </div>
       <p>Player: {playerScore} | Computer: {computerScore}</p> {/* Display scores here */}
       <br></br>
-      <p>
-        <button onClick={() => play('rock')} disabled={disableButtons()}>
-        <img src={RockButtonImage} alt="Rock" style={{ width: '150px', height: 'auto' }}></img>
-        </button>
-        <button onClick={() => play('paper')} disabled={disableButtons()}>
-        <img src={PaperButtonImage} alt="Paper" style={{ width: '150px', height: 'auto' }}></img>
-        </button>
-        <button onClick={() => play('scissors')} disabled={disableButtons()}>
-        <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '150px', height: 'auto' }}></img>
-        </button>
-      </p>
+      <div className='choice-container'>
+        <p>
+          <button onClick={() => play('rock')} disabled={disableButtons()}>
+          <img src={RockButtonImage} alt="Rock" style={{ width: '150px', height: 'auto' }}></img>
+          </button>
+          <button onClick={() => play('paper')} disabled={disableButtons()}>
+          <img src={PaperButtonImage} alt="Paper" style={{ width: '150px', height: 'auto' }}></img>
+          </button>
+          <button onClick={() => play('scissors')} disabled={disableButtons()}>
+          <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '150px', height: 'auto' }}></img>
+          </button>
+        </p>
+        <p>
+        <img
+          src={AiImage}
+          alt="AI Image Thinking"
+          style={{ width: '150px', height: 'auto' }}
+        />
+        </p>
+      </div>
       <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p>
       {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
         <button onClick={resetGame}>Play Again</button>
