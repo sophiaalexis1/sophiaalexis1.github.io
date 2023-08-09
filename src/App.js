@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import GoToGoogleButton from './Components/GoToGoogleButton/GoToGoogleButton';
-import PaperButtonImage from './Assets/Paper.jpeg';
-import RockButtonImage from './Assets/rock copy.png';
+import PaperButtonImage from './Assets/paper.png';
+import RockButtonImage from './Assets/rock.png';
 import ScissorsButtonImage from './Assets/scissors.png';
-import AiImage from './Assets/AI thinking.png';
+import AiImage from './Assets/AI thinking 2.png';
+import GameRules from './Components/GameRules/GameRules'
 import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
@@ -87,6 +88,7 @@ const RockPaperScissors = () => {
     setPlayerSelection('');
     setComputerSelection('');
     setResult('');
+    setRoundNumber(1);
   };
 
   const disableButtons = () => {
@@ -94,47 +96,60 @@ const RockPaperScissors = () => {
   };
 
   return (
-    <div className="game-container">
+    <div>
       <div className='header-container'>
-      <h1>Play Rock, Paper, Scissors Against AI</h1>
-      <h3>Round {roundNumber} </h3>
-      {/* {isPlayerTurn && <p>Take your pick:</p>} */}
-      <p>Take your pick:</p>
+        <h1>Play Rock, Paper, Scissors Against AI</h1>
+        <h2 className='round'>ROUND {roundNumber} </h2>
+        {/* {isPlayerTurn && <p>Take your pick:</p>} */}
       </div>
-      <p>Player: {playerScore} | Computer: {computerScore}</p> {/* Display scores here */}
-      <br></br>
-      <div className='choice-container'>
-        <p>
-          <button onClick={() => play('rock')} disabled={disableButtons()}>
-          <img src={RockButtonImage} alt="Rock" style={{ width: '150px', height: 'auto' }}></img>
-          </button>
-          <button onClick={() => play('paper')} disabled={disableButtons()}>
-          <img src={PaperButtonImage} alt="Paper" style={{ width: '150px', height: 'auto' }}></img>
-          </button>
-          <button onClick={() => play('scissors')} disabled={disableButtons()}>
-          <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '150px', height: 'auto' }}></img>
-          </button>
-        </p>
-        <p>
-        <img
-          src={AiImage}
-          alt="AI Image Thinking"
-          style={{ width: '150px', height: 'auto' }}
-        />
-        </p>
+      <div className='game-container'>
+        <div className='scores-container'>
+          <div className='player-score'>
+            <p>YOUR SCORE: </p> 
+            <p> {playerScore} </p> 
+          </div>
+          <div className='choice-container'>
+            <p>
+              <button onClick={() => play('rock')} disabled={disableButtons()}>
+              <img src={RockButtonImage} alt="Rock" style={{ width: '250px', height: '250' }}></img>
+              </button>
+              <button onClick={() => play('paper')} disabled={disableButtons()}>
+              <img src={PaperButtonImage} alt="Paper" style={{ width: '250px', height: '250' }}></img>
+              </button>
+              <button onClick={() => play('scissors')} disabled={disableButtons()}>
+              <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '250px', height: '250' }}></img>
+              </button>
+            </p>
+          </div>
+          <p> Take your pick</p>
+        </div>
+      <div>
+      <div className='computer-score'>
+        <p>Computer:</p> 
+        <p> {computerScore}</p> {/* Display scores here */}
+          <img
+            src={AiImage}
+            alt="AI Image Thinking"
+            style={{ width: '250px', height: '250' }}
+          />
       </div>
-      <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p>
-      {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
-        <button onClick={resetGame}>Play Again</button>
+    </div>
+    </div>
+    <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p>
+    {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
+      <button onClick={resetGame} className='play-again'>Play Again</button>
       ) : null}
       {/* <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p> */}
       {/* <p>Player: {playerScore} | Computer: {computerScore}</p>
       {roundNumber <= maxRounds && (playerScore >= maxRounds || computerScore >= maxRounds) ? (
         <button onClick={resetGame}>Play Again</button>
       ) : null} */}
-      <div className="exit-button-container">
+    <br />
+    <GameRules />
+    <br />
+    <div className='exit-button-container'>
         <GoToGoogleButton/>
-      </div>
+    </div>
     </div>
   );
 };

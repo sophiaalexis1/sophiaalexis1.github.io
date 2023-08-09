@@ -1,18 +1,33 @@
-.body {
+body {
   background-color: #00E3E3;
+  color: white;
+  margin: 0;
+  text-align: center;
 }
 
 /* Reset default button styles */
-/* button {
+button {
+background-color: #00E3E3;
+color: #fff;
+border:none;
+border-radius:10px;
+} 
+.play-again {
+  background-color: blue;
+  color: white;
   border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
+  border-radius: 50%; /* Make it round */
+  padding: 10px 20px; /* Adjust padding as needed */
   cursor: pointer;
-  width: 50px;
-  height: 50px;
-  display: inline-block;
-} */
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s; 
+}  
+
+.play-again:hover {
+  background-color: #3f17f3;
+  color: white;
+}
 
 /* Style the image button */
 .image-button {
@@ -26,34 +41,58 @@
 /* Style the button image */
 .image-button img {
   width: 200px; /* Adjust the width as needed */
-  height: auto;
+  height: 200px;
   display: block;
 }
 
 .exit-button-container {
-  position: absolute;
+  display: flex;
+  justify-content: flex-end;
   bottom: 10px;
   right: 10px;
 }
 
 .game-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 100vh; /* This ensures the container takes up the full viewport height */
+  justify-content: space-evenly;
 }
 
 .header-container {
   text-align: center;
   margin-bottom: 20px; /* Adjust as needed */
+  color: black;
 }
 
 .choice-container {
   display: flex;
   align-items: center;
   justify-content: center; 
-  flex-direction: row;
-  height: 100vh; /* This ensures the container takes up the full viewport height */
+  flex-direction: row;/* This ensures the container takes up the full viewport height */
 }
 
+.round {
+  color: white;
+}
+
+.player-choice {
+  display: flex;
+
+}
+
+/* .scores-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+ 
+} */
+
+.player-score,
+.computer-score {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

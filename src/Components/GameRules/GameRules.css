@@ -1,0 +1,15 @@
+.game-rules {
+    border: 2px solid #ff0303;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: left;
+  }
+  
+.how-to-play h2 {
+    color: #00E3E3;
+    margin-bottom: 10px;
+}
+  
