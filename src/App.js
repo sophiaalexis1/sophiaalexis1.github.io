@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import GoToGoogleButton from './Components/GoToGoogleButton/GoToGoogleButton';
-import PaperButtonImage from './Assets/paper.png';
-import RockButtonImage from './Assets/rock.png';
-import ScissorsButtonImage from './Assets/scissors.png';
+import PaperButtonImage from './Assets/Paper screenshot.png';
+import RockButtonImage from './Assets/Rock screenshot.png';
+import ScissorsButtonImage from './Assets/Scissors screenshot.png';
 import AiImage from './Assets/AI thinking 2.png';
 import GameRules from './Components/GameRules/GameRules'
 import './App.css';
@@ -24,16 +24,25 @@ const RockPaperScissors = () => {
     return choices[Math.floor(Math.random() * choices.length)];
   };
 
+  const [aiChosenImage, setAiChosenImage] = useState(AiImage);
+
   const play = (playerSelection) => {
     if (playerScore < roundsToWin && computerScore < roundsToWin) {
       const computerSelection = computerPlay();
       setPlayerSelection(playerSelection);
       setComputerSelection(computerSelection);
-      const roundResult = determineWinner(playerSelection, computerSelection);
-      updateScore(roundResult);
-      setResult(roundResult);
-      setRoundNumber(roundNumber + 1);
-      setIsPlayerTurn(false); 
+      setAiChosenImage(AiImage);
+
+      setTimeout(() => {
+        setAiChosenImage(getAiImageByChoice(computerSelection));
+        const roundResult = determineWinner(playerSelection, computerSelection);
+        updateScore(roundResult);
+        setResult(roundResult);
+        setRoundNumber(roundNumber + 1);
+        setIsPlayerTurn(false);
+      }, 1000);
+    }
+  };
     // if (roundNumber <= maxRounds && isPlayerTurn) {
     //   const computerSelection = computerPlay();
     //   setPlayerSelection(playerSelection);
@@ -49,8 +58,7 @@ const RockPaperScissors = () => {
     //     setIsPlayerTurn(false);
     //     announceWinner();
     //   }
-    }
-  };
+  
 
   const determineWinner = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
@@ -95,6 +103,21 @@ const RockPaperScissors = () => {
     return playerScore >= roundsToWin || computerScore >= roundsToWin;
   };
 
+  const getAiImageByChoice = (choice) => {
+    // Implement logic to map AI's choice to corresponding image
+    // For example, if choice is 'rock', return RockButtonImage
+    switch (choice) {
+      case 'rock':
+        return RockButtonImage;
+      case 'paper':
+        return PaperButtonImage;
+      case 'scissors':
+        return ScissorsButtonImage;
+      default:
+        return AiImage;
+    }
+  };
+
   return (
     <div>
       <div className='header-container'>
@@ -125,11 +148,11 @@ const RockPaperScissors = () => {
         </div>
       <div>
       <div className='computer-score'>
-        <p>Computer:</p> 
+        <p>AI SCORE:</p> 
         <p> {computerScore}</p> {/* Display scores here */}
           <img
-            src={AiImage}
-            alt="AI Image Thinking"
+            src={aiChosenImage}
+            alt="AI Chosen"
             style={{ width: '250px', height: '250' }}
           />
       </div>
