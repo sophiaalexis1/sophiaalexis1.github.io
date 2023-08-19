@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import GoToGoogleButton from './Components/GoToGoogleButton/GoToGoogleButton';
-import PaperButtonImage from './Assets/Paper screenshot.png';
-import RockButtonImage from './Assets/Rock screenshot.png';
-import ScissorsButtonImage from './Assets/Scissors screenshot.png';
-import AiImage from './Assets/AI thinking 2.png';
+import PaperButtonImage from './Assets/Game-Paper.jpg';
+import RockButtonImage from './Assets/Game-Rock.jpg';
+import ScissorsButtonImage from './Assets/Game-Scissors.jpg';
+import AiImage from './Assets/Game-AI thinks.jpg';
 import GameRules from './Components/GameRules/GameRules'
 import './App.css';
 
@@ -161,19 +161,19 @@ const RockPaperScissors = () => {
             <div className='player-choice'>
               
                 <button onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={RockButtonImage} alt="Rock" style={{ width: '250px', height: '250px' }}></img>
+                <img src={RockButtonImage} alt="Rock" style={{ width: 'auto', height: 'auto' }}></img>
                 </button>
                 <button onClick={() => play('paper')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={PaperButtonImage} alt="Paper" style={{ width: '250px', height: '250px' }}></img>
+                <img src={PaperButtonImage} alt="Paper" style={{ width: 'auto', height: 'auto' }}></img>
                 </button>
                 <button onClick={() => play('scissors')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '250px', height: '250px' }}></img>
+                <img src={ScissorsButtonImage} alt="Scissor" style={{ width: 'auto', height: 'auto' }}></img>
                 </button>
               
             </div>
             {/* Display the player's selected image */}
             {playerSelectedImage && (
-            <img src={playerSelectedImage} alt="Player Selected" style={{ width: '200px', height: '200px' }}></img>
+            <img src={playerSelectedImage} alt="Player Selected" style={{ width: 'auto', height: 'auto' }}></img>
             )}
           </div>
           <p> Take your pick</p>
