@@ -4,10 +4,10 @@ import './GameRules.css';
 const GameRules = () => {
   return (
     <div className='game-rules'>
-      <h2>Game Rules</h2>
+      <h2>GAME RULES</h2>
       <p>
         The game begins with you and the AI each having 0 points.<br />
-        1.You will make your selection by clicking on the icon you choose for each round. The available options are:<br />
+        1. You will make your selection by clicking on the icon you choose for each round. The available options are:<br />
         <ul>
           <li><strong>✊ (Rock)</strong></li>
           <li><strong>✋ (Paper)</strong></li>

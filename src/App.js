@@ -40,7 +40,7 @@ const RockPaperScissors = () => {
         setResult(roundResult);
         setRoundNumber(roundNumber + 1);
         setIsPlayerTurn(false);
-      }, 1000);
+      }, 3000);
     }
   };
     // if (roundNumber <= maxRounds && isPlayerTurn) {
@@ -121,7 +121,7 @@ const RockPaperScissors = () => {
   return (
     <div>
       <div className='header-container'>
-        <h1>Play Rock, Paper, Scissors Against AI</h1>
+        <h1>Play Rock Paper Scissors Against AI</h1>
         <h2 className='round'>ROUND {roundNumber} </h2>
         {/* {isPlayerTurn && <p>Take your pick:</p>} */}
       </div>
@@ -134,13 +134,13 @@ const RockPaperScissors = () => {
           <div className='choice-container'>
             <p>
               <button onClick={() => play('rock')} disabled={disableButtons()}>
-              <img src={RockButtonImage} alt="Rock" style={{ width: '250px', height: '250' }}></img>
+              <img src={RockButtonImage} alt="Rock" style={{ width: '250px', height: '250px' }}></img>
               </button>
               <button onClick={() => play('paper')} disabled={disableButtons()}>
-              <img src={PaperButtonImage} alt="Paper" style={{ width: '250px', height: '250' }}></img>
+              <img src={PaperButtonImage} alt="Paper" style={{ width: '250px', height: '250px' }}></img>
               </button>
               <button onClick={() => play('scissors')} disabled={disableButtons()}>
-              <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '250px', height: '250' }}></img>
+              <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '250px', height: '250px' }}></img>
               </button>
             </p>
           </div>
@@ -153,8 +153,10 @@ const RockPaperScissors = () => {
           <img
             src={aiChosenImage}
             alt="AI Chosen"
-            style={{ width: '250px', height: '250' }}
+            style={{ width: '250px', height: '250px' }}
           />
+        <br />
+        <p></p>
       </div>
     </div>
     </div>
