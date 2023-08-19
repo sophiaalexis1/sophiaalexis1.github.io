@@ -69,7 +69,7 @@ border-radius:10px;
   display: flex;
   align-items: center;
   justify-content: center; 
-  flex-direction: row;/* This ensures the container takes up the full viewport height */
+  /*flex-direction: row;/* This ensures the container takes up the full viewport height */
 }
 
 .round {

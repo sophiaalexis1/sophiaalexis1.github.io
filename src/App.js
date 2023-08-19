@@ -25,13 +25,20 @@ const RockPaperScissors = () => {
   };
 
   const [aiChosenImage, setAiChosenImage] = useState(AiImage);
+  const [isButtonsVisible, setIsButtonsVisible] = useState(true);
+  const [playerSelectedImage, setPlayerSelectedImage] = useState(null);
+
 
   const play = (playerSelection) => {
     if (playerScore < roundsToWin && computerScore < roundsToWin) {
+      setIsButtonsVisible(false);
+
       const computerSelection = computerPlay();
       setPlayerSelection(playerSelection);
       setComputerSelection(computerSelection);
       setAiChosenImage(AiImage);
+
+      setPlayerSelectedImage(getPlayerImageByChoice(playerSelection));
 
       setTimeout(() => {
         setAiChosenImage(getAiImageByChoice(computerSelection));
@@ -40,6 +47,12 @@ const RockPaperScissors = () => {
         setResult(roundResult);
         setRoundNumber(roundNumber + 1);
         setIsPlayerTurn(false);
+
+        setTimeout(() => {
+          setIsButtonsVisible(true);
+          setAiChosenImage(AiImage);
+          setPlayerSelectedImage(null); 
+        }, 2000);
       }, 3000);
     }
   };
@@ -59,6 +72,19 @@ const RockPaperScissors = () => {
     //     announceWinner();
     //   }
   
+  const getPlayerImageByChoice = (choice) => {
+    switch (choice) {
+      case 'rock':
+        return RockButtonImage;
+      case 'paper':
+        return PaperButtonImage;
+      case 'scissors':
+        return ScissorsButtonImage;
+      default:
+        return null;
+    }
+  };
+    
 
   const determineWinner = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
@@ -132,17 +158,23 @@ const RockPaperScissors = () => {
             <p> {playerScore} </p> 
           </div>
           <div className='choice-container'>
-            <p>
-              <button onClick={() => play('rock')} disabled={disableButtons()}>
-              <img src={RockButtonImage} alt="Rock" style={{ width: '250px', height: '250px' }}></img>
-              </button>
-              <button onClick={() => play('paper')} disabled={disableButtons()}>
-              <img src={PaperButtonImage} alt="Paper" style={{ width: '250px', height: '250px' }}></img>
-              </button>
-              <button onClick={() => play('scissors')} disabled={disableButtons()}>
-              <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '250px', height: '250px' }}></img>
-              </button>
-            </p>
+            <div className='player-choice'>
+              
+                <button onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
+                <img src={RockButtonImage} alt="Rock" style={{ width: '250px', height: '250px' }}></img>
+                </button>
+                <button onClick={() => play('paper')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
+                <img src={PaperButtonImage} alt="Paper" style={{ width: '250px', height: '250px' }}></img>
+                </button>
+                <button onClick={() => play('scissors')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
+                <img src={ScissorsButtonImage} alt="Scissor" style={{ width: '250px', height: '250px' }}></img>
+                </button>
+              
+            </div>
+            {/* Display the player's selected image */}
+            {playerSelectedImage && (
+            <img src={playerSelectedImage} alt="Player Selected" style={{ width: '200px', height: '200px' }}></img>
+            )}
           </div>
           <p> Take your pick</p>
         </div>
@@ -160,7 +192,7 @@ const RockPaperScissors = () => {
       </div>
     </div>
     </div>
-    <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p>
+    <p>You chose {playerSelection}, AI chose {computerSelection}. {result}</p>
     {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
       <button onClick={resetGame} className='play-again'>Play Again</button>
       ) : null}
