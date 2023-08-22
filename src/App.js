@@ -53,7 +53,11 @@ const RockPaperScissors = () => {
           setAiChosenImage(AiImage);
           setPlayerSelectedImage(null); 
         }, 2000);
-      }, 3000);
+
+        setTimeout(() => {
+          setAiChosenImage(AiImage);
+        }, 3000);
+      }, 1000);
     }
   };
     // if (roundNumber <= maxRounds && isPlayerTurn) {
