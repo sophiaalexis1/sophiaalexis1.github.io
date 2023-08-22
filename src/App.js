@@ -52,7 +52,7 @@ const RockPaperScissors = () => {
           setIsButtonsVisible(true);
           setAiChosenImage(AiImage);
           setPlayerSelectedImage(null); 
-        }, 2000);
+        }, 4000);
 
         setTimeout(() => {
           setAiChosenImage(AiImage);
