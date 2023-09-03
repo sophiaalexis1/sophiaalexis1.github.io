@@ -8,6 +8,7 @@ import GameRules from './Components/GameRules/GameRules';
 import YouWin from './Assets/YouWin.png';
 import AiWin from './Assets/AiWins.png';
 import './App.css';
+import ShowResult from './Components/ShowResult/ShowResult';
 
 const choices = ['rock', 'paper', 'scissors'];
 const roundsToWin = 2;
@@ -23,6 +24,7 @@ const RockPaperScissors = () => {
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [playerWins, setPlayerWins] = useState(false);
   const [computerWins, setComputerWins] = useState(false);
+  const [showResult, setShowResult] = useState(false);
 
 
   const computerPlay = () => {
@@ -58,11 +60,14 @@ const RockPaperScissors = () => {
           setIsButtonsVisible(true);
           setAiChosenImage(AiImage);
           setPlayerSelectedImage(null);
+          setShowResult(false);
         }, 4000);
 
         setTimeout(() => {
           setAiChosenImage(AiImage);
         }, 3000);
+        
+        setShowResult(true);
       }, 1000);
     }
   };
@@ -220,7 +225,12 @@ const RockPaperScissors = () => {
           </div>
         </div>
       </div>
-      <p>You chose {playerSelection}, AI chose {computerSelection}. {result}</p>
+      <ShowResult 
+        playerSelection={playerSelection}
+        computerSelection={computerSelection}
+        result={result}
+        show={showResult}
+      />
       {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
         <button onClick={resetGame} className='play-again'>Play Again</button>
       ) : null}
