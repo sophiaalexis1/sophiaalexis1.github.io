@@ -1,20 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.6ed33a78.css",
-    "main.js": "/static/js/main.39be7e27.js",
+    "main.css": "/static/css/main.ced6b524.css",
+    "main.js": "/static/js/main.40141816.js",
     "static/js/787.15230f2c.chunk.js": "/static/js/787.15230f2c.chunk.js",
+    "static/media/YouWin.png": "/static/media/YouWin.30c8b34bcf386161fee9.png",
+    "static/media/AiWins.png": "/static/media/AiWins.6855b9cdb45ea826c573.png",
     "static/media/exit-button.png": "/static/media/exit-button.6f8939464a3eb36f934a.png",
     "static/media/Game-AI thinks.jpg": "/static/media/Game-AI thinks.4f5cbf66c0eb24e20c70.jpg",
     "static/media/Game-Paper.jpg": "/static/media/Game-Paper.5d060f5d371ae3e68c01.jpg",
     "static/media/Game-Scissors.jpg": "/static/media/Game-Scissors.ba5df009243a7f5d6cf4.jpg",
     "static/media/Game-Rock.jpg": "/static/media/Game-Rock.6b80715f49f512ee4fdc.jpg",
     "index.html": "/index.html",
-    "main.6ed33a78.css.map": "/static/css/main.6ed33a78.css.map",
-    "main.39be7e27.js.map": "/static/js/main.39be7e27.js.map",
+    "main.ced6b524.css.map": "/static/css/main.ced6b524.css.map",
+    "main.40141816.js.map": "/static/js/main.40141816.js.map",
     "787.15230f2c.chunk.js.map": "/static/js/787.15230f2c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ed33a78.css",
-    "static/js/main.39be7e27.js"
+    "static/css/main.ced6b524.css",
+    "static/js/main.40141816.js"
   ]
 }
