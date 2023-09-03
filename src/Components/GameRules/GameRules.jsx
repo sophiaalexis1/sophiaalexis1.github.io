@@ -6,19 +6,17 @@ const GameRules = () => {
     <div className='game-rules'>
       <h2>GAME RULES</h2>
       <p>
-        The game begins with you and the AI each having 0 points.<br />
-        1. You will make your selection by clicking on the icon you choose for each round. The available options are:<br />
+        1. The game consists of a series of rounds, and the first player to win 3 rounds is declared the winner of the match. <br />
+        2. In each round, the player chooses one of three possible moves: rock, paper, or scissors. The AI also selects one of these moves.<br />
+        3. The moves are compared, and the winner of the round is determined based on the following rules:<br />
         <ul>
-          <li><strong>✊ (Rock)</strong></li>
-          <li><strong>✋ (Paper)</strong></li>
-          <li><strong>✌️ (Scissors)</strong></li>
+          <li>Rock beats scissors (rock crushes scissors).</li>
+          <li>Paper beats rock (paper covers rock).</li>
+          <li>Scissors beat paper (scissors cut paper).</li>
         </ul>
-        2. After you make your choice for the current round, AI will randomly generate a choice.<br />
-        3. The winner of each round will be determined based on the rules mentioned earlier.<br />
-        4. If there's a tie (both you and the AI choose the same icon), no one gets a point for that round.<br />
-        5. Continue playing three rounds in total, automation will keep track of points after each round.<br />
-        6. The first player to win two rounds (get two points) will be the overall winner of the game.<br />
-        7. In case you or the AI win two rounds before completing all three, we'll end the game and declare the winner.
+        4. If both the player and the AI choose the same move, the round is considered a tie, and no points are awarded to either side.<br />
+        5. After each round, the winner (or tie) is announced, and the score is updated accordingly.<br />
+        6. The game continues until one of the players reaches a score of 3, thus winning the match.
       </p>
     </div>
   );
