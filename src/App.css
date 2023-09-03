@@ -1,35 +1,37 @@
+/* Default styles for all screen sizes */
 body {
   background-color: #00E3E3;
   color: white;
   margin: 0;
   text-align: center;
+  font-size: 16px; /* Set a default font size */
 }
 
 /* Reset default button styles */
 button {
-background-color: #00E3E3;
-color: #fff;
-border:none;
-border-radius:10px;
-} 
+  background-color: #00E3E3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .play-again {
   background-color: blue;
   color: white;
   border: none;
-  border-radius: 50%; /* Make it round */
-  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 50%;
+  padding: 10px 20px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 16px;
-  transition: background-color 0.3s, color 0.3s; 
-}  
+}
 
 .play-again:hover {
   background-color: #3f17f3;
-  color: white;
 }
 
-/* Style the image button */
 .image-button {
   display: inline-block;
   border: none;
@@ -38,10 +40,10 @@ border-radius:10px;
   margin: 0;
 }
 
-/* Style the button image */
 .image-button img {
-  width: 200px; /* Adjust the width as needed */
-  height: 200px;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
   display: block;
 }
 
@@ -52,24 +54,24 @@ border-radius:10px;
   right: 10px;
 }
 
+/* Base styles for game container */
 .game-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
 
 .header-container {
   text-align: center;
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
   color: black;
 }
 
 .choice-container {
   display: flex;
   align-items: center;
-  justify-content: center; 
-  /*flex-direction: row;/* This ensures the container takes up the full viewport height */
+  justify-content: center;
 }
 
 .round {
@@ -78,16 +80,8 @@ border-radius:10px;
 
 .player-choice {
   display: flex;
-
+  justify-content: center;
 }
-
-/* .scores-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
- 
-} */
 
 .player-score,
 .computer-score {
@@ -118,7 +112,33 @@ border-radius:10px;
 }
 
 .ai-wins {
-  font-size: 24px; /* Adjust the font size as needed */
-  color: red; /* Adjust the color as needed */
-  transform: rotate(10deg); /* Rotate the text */
+  font-size: 24px;
+  color: red;
+  transform: rotate(10deg);
+}
+
+/* Media Query for Tablets and Desktops */
+@media (min-width: 1px) {
+  body {
+    font-size: 18px; /* Increase font size for larger screens */
+  }
+
+  .game-container {
+    flex-direction: row;
+  }
+
+  .player-choice {
+    justify-content: space-around;
+  }
+
+  .image-button img {
+    max-width: 150px; /* Adjust max-width for larger screens */
+  }
+}
+
+/* Media Query for Desktops and Larger Screens */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px; /* Further increase font size for larger screens */
+  }
 }

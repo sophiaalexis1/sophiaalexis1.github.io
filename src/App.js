@@ -7,8 +7,8 @@ import AiImage from './Assets/Game-AI thinks.jpg';
 import GameRules from './Components/GameRules/GameRules';
 import YouWin from './Assets/YouWin.png';
 import AiWin from './Assets/AiWins.png';
-import './App.css';
 import ShowResult from './Components/ShowResult/ShowResult';
+import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
 const roundsToWin = 2;
@@ -181,19 +181,19 @@ const RockPaperScissors = () => {
             <div className='player-choice'>
 
               <button onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={RockButtonImage} alt="Rock" style={{ width: 'auto', height: 'auto' }}></img>
+                <img src={RockButtonImage} alt="Rock" ></img>
               </button>
               <button onClick={() => play('paper')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={PaperButtonImage} alt="Paper" style={{ width: 'auto', height: 'auto' }}></img>
+                <img src={PaperButtonImage} alt="Paper" ></img>
               </button>
               <button onClick={() => play('scissors')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={ScissorsButtonImage} alt="Scissor" style={{ width: 'auto', height: 'auto' }}></img>
+                <img src={ScissorsButtonImage} alt="Scissor" ></img>
               </button>
 
             </div>
             {/* Display the player's selected image */}
             {playerSelectedImage && (
-              <img src={playerSelectedImage} alt="Player Selected" style={{ width: 'auto', height: 'auto' }}></img>
+              <img src={playerSelectedImage} alt="Player Selected" ></img>
             )}
           </div>
           <p> Take your pick</p>
@@ -218,7 +218,7 @@ const RockPaperScissors = () => {
             <img
               src={aiChosenImage}
               alt="AI Chosen"
-              style={{ width: '250px', height: '250px' }}
+              style={{ width: 'auto', height: 'auto' }}
             />
             <br />
             <p></p>
