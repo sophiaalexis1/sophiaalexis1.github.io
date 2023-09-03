@@ -4,7 +4,9 @@ import PaperButtonImage from './Assets/Game-Paper.jpg';
 import RockButtonImage from './Assets/Game-Rock.jpg';
 import ScissorsButtonImage from './Assets/Game-Scissors.jpg';
 import AiImage from './Assets/Game-AI thinks.jpg';
-import GameRules from './Components/GameRules/GameRules'
+import GameRules from './Components/GameRules/GameRules';
+import YouWin from './Assets/YouWin.png';
+import AiWin from './Assets/AiWins.png';
 import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
@@ -19,6 +21,9 @@ const RockPaperScissors = () => {
   const [computerSelection, setComputerSelection] = useState('');
   const [result, setResult] = useState('');
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
+  const [playerWins, setPlayerWins] = useState(false);
+  const [computerWins, setComputerWins] = useState(false);
+
 
   const computerPlay = () => {
     return choices[Math.floor(Math.random() * choices.length)];
@@ -47,11 +52,12 @@ const RockPaperScissors = () => {
         setResult(roundResult);
         setRoundNumber(roundNumber + 1);
         setIsPlayerTurn(false);
+        determineWinner()
 
         setTimeout(() => {
           setIsButtonsVisible(true);
           setAiChosenImage(AiImage);
-          setPlayerSelectedImage(null); 
+          setPlayerSelectedImage(null);
         }, 4000);
 
         setTimeout(() => {
@@ -60,22 +66,22 @@ const RockPaperScissors = () => {
       }, 1000);
     }
   };
-    // if (roundNumber <= maxRounds && isPlayerTurn) {
-    //   const computerSelection = computerPlay();
-    //   setPlayerSelection(playerSelection);
-    //   setComputerSelection(computerSelection);
-    //   const roundResult = determineWinner(playerSelection, computerSelection);
-    //   updateScore(roundResult);
-    //   setResult(roundResult);
+  // if (roundNumber <= maxRounds && isPlayerTurn) {
+  //   const computerSelection = computerPlay();
+  //   setPlayerSelection(playerSelection);
+  //   setComputerSelection(computerSelection);
+  //   const roundResult = determineWinner(playerSelection, computerSelection);
+  //   updateScore(roundResult);
+  //   setResult(roundResult);
 
-    //   if (roundNumber < maxRounds) {
-    //     setRoundNumber(roundNumber + 1);
-    //     setIsPlayerTurn(false);
-    //   } else {
-    //     setIsPlayerTurn(false);
-    //     announceWinner();
-    //   }
-  
+  //   if (roundNumber < maxRounds) {
+  //     setRoundNumber(roundNumber + 1);
+  //     setIsPlayerTurn(false);
+  //   } else {
+  //     setIsPlayerTurn(false);
+  //     announceWinner();
+  //   }
+
   const getPlayerImageByChoice = (choice) => {
     switch (choice) {
       case 'rock':
@@ -88,7 +94,7 @@ const RockPaperScissors = () => {
         return null;
     }
   };
-    
+
 
   const determineWinner = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
@@ -108,6 +114,7 @@ const RockPaperScissors = () => {
 
   const updateScore = (roundResult) => {
     if (playerScore >= roundsToWin || computerScore >= roundsToWin) {
+      console.log("Game should be announced as over.")
       announceWinner();
     }
   };
@@ -115,8 +122,10 @@ const RockPaperScissors = () => {
   const announceWinner = () => {
     if (playerScore > computerScore) {
       setResult("Congratulations! You win the game!");
+      setPlayerWins(true);
     } else {
       setResult("Game over. Computer wins!");
+      setComputerWins(true);
     }
   };
 
@@ -127,6 +136,8 @@ const RockPaperScissors = () => {
     setComputerSelection('');
     setResult('');
     setRoundNumber(1);
+    setPlayerWins(false);
+    setComputerWins(false);
   };
 
   const disableButtons = () => {
@@ -158,59 +169,72 @@ const RockPaperScissors = () => {
       <div className='game-container'>
         <div className='scores-container'>
           <div className='player-score'>
-            <p>YOUR SCORE: </p> 
-            <p> {playerScore} </p> 
+            <p>YOUR SCORE: </p>
+            <p> {playerScore} </p>
           </div>
           <div className='choice-container'>
             <div className='player-choice'>
-              
-                <button onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
+
+              <button onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
                 <img src={RockButtonImage} alt="Rock" style={{ width: 'auto', height: 'auto' }}></img>
-                </button>
-                <button onClick={() => play('paper')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
+              </button>
+              <button onClick={() => play('paper')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
                 <img src={PaperButtonImage} alt="Paper" style={{ width: 'auto', height: 'auto' }}></img>
-                </button>
-                <button onClick={() => play('scissors')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
+              </button>
+              <button onClick={() => play('scissors')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
                 <img src={ScissorsButtonImage} alt="Scissor" style={{ width: 'auto', height: 'auto' }}></img>
-                </button>
-              
+              </button>
+
             </div>
             {/* Display the player's selected image */}
             {playerSelectedImage && (
-            <img src={playerSelectedImage} alt="Player Selected" style={{ width: 'auto', height: 'auto' }}></img>
+              <img src={playerSelectedImage} alt="Player Selected" style={{ width: 'auto', height: 'auto' }}></img>
             )}
           </div>
           <p> Take your pick</p>
         </div>
-      <div>
-      <div className='computer-score'>
-        <p>AI SCORE:</p> 
-        <p> {computerScore}</p> {/* Display scores here */}
-          <img
-            src={aiChosenImage}
-            alt="AI Chosen"
-            style={{ width: '250px', height: '250px' }}
-          />
-        <br />
-        <p></p>
+        {playerScore >= roundsToWin && (
+          <div className="blinking">
+            <img src={YouWin} alt="Winning" />
+            <p>You WIN!!</p>
+          </div>
+        )}
+        {computerScore >= roundsToWin && (
+          <div className="blinking">
+            <img src={AiWin} alt="Winning" />
+            <p className="ai-wins">AI Wins!!</p>
+          </div>
+        )}
+
+        <div>
+          <div className='computer-score'>
+            <p>AI SCORE:</p>
+            <p> {computerScore}</p> {/* Display scores here */}
+            <img
+              src={aiChosenImage}
+              alt="AI Chosen"
+              style={{ width: '250px', height: '250px' }}
+            />
+            <br />
+            <p></p>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-    <p>You chose {playerSelection}, AI chose {computerSelection}. {result}</p>
-    {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
-      <button onClick={resetGame} className='play-again'>Play Again</button>
+      <p>You chose {playerSelection}, AI chose {computerSelection}. {result}</p>
+      {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
+        <button onClick={resetGame} className='play-again'>Play Again</button>
       ) : null}
       {/* <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p> */}
       {/* <p>Player: {playerScore} | Computer: {computerScore}</p>
       {roundNumber <= maxRounds && (playerScore >= maxRounds || computerScore >= maxRounds) ? (
         <button onClick={resetGame}>Play Again</button>
       ) : null} */}
-    <br />
-    <GameRules />
-    <br />
-    <div className='exit-button-container'>
-        <GoToGoogleButton/>
-    </div>
+      <br />
+      <GameRules />
+      <br />
+      <div className='exit-button-container'>
+        <GoToGoogleButton />
+      </div>
     </div>
   );
 };

@@ -96,3 +96,29 @@ border-radius:10px;
   flex-direction: column;
   align-items: center;
 }
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* CSS */
+.blinking {
+  animation: blinker 3s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.ai-wins {
+  font-size: 24px; /* Adjust the font size as needed */
+  color: red; /* Adjust the color as needed */
+  transform: rotate(10deg); /* Rotate the text */
+}
