@@ -192,3 +192,15 @@ button {
   animation: blinker 3s linear infinite;
 }
 
+/* Define a class for game buttons */
+.game-button {
+  width: auto; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .game-button {
+    width: auto; /* Adjust the width for smaller screens */
+  }
+}

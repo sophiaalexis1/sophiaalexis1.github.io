@@ -216,7 +216,8 @@ const RockPaperScissors = () => {
           <div className='choice-container'>
             <div className='player-choice'>
 
-              <button onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
+              <button 
+                onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }} className="game-button">
                 <img src={RockButtonImage} alt="Rock" ></img>
               </button>
               <button onClick={() => play('paper')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
