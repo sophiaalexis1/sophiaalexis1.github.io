@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GoToGoogleButton from './Components/GoToGoogleButton/GoToGoogleButton';
 import PaperButtonImage from './Assets/Game-Paper.jpg';
 import RockButtonImage from './Assets/Game-Rock.jpg';
@@ -11,7 +11,7 @@ import ShowResult from './Components/ShowResult/ShowResult';
 import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
-const roundsToWin = 2;
+const roundsToWin = 3;
 // const maxRounds=3;
 
 const RockPaperScissors = () => {
@@ -25,7 +25,43 @@ const RockPaperScissors = () => {
   const [playerWins, setPlayerWins] = useState(false);
   const [computerWins, setComputerWins] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [blinkCount, setBlinkCount] = useState(0); // Add a state variable for blink count
+  const [showYouWin, setShowYouWin] = useState(false);
+  const [showAIWin, setShowAIWin] = useState(false);
 
+  useEffect(() => {
+    // Check if the player has won and display "You Win" message
+    if (playerScore >= roundsToWin) {
+      setShowYouWin(true);
+      startBlinking();
+    } else {
+      setShowYouWin(false);
+    }
+
+    // Check if the computer has won and display "AI Wins" message
+    if (computerScore >= roundsToWin) {
+      setShowAIWin(true);
+      startBlinking();
+    } else {
+      setShowAIWin(false);
+    }
+  }, [playerScore, computerScore]);
+
+  const startBlinking = () => {
+    let blinkCounter = 0; // Initialize a counter for blinks
+
+    // Start blinking by setting an interval
+    const blinkInterval = setInterval(() => {
+      setBlinkCount((prevCount) => prevCount + 1);
+      blinkCounter++; // Increment the blink counter
+
+      // Check if it has blinked three times
+      if (blinkCounter === 3) {
+        clearInterval(blinkInterval); // Clear the interval after three blinks
+        resetGame(); // Reset the game
+      }
+    }, 1000); // Blink every 1000 milliseconds (1 second)
+  };
 
   const computerPlay = () => {
     return choices[Math.floor(Math.random() * choices.length)];
@@ -174,7 +210,7 @@ const RockPaperScissors = () => {
       <div className='game-container'>
         <div className='scores-container'>
           <div className='player-score'>
-            <p>YOUR SCORE: </p>
+            <h3>YOUR SCORE: </h3>
             <p> {playerScore} </p>
           </div>
           <div className='choice-container'>
@@ -199,21 +235,19 @@ const RockPaperScissors = () => {
           <p> Take your pick</p>
         </div>
         {playerScore >= roundsToWin && (
-          <div className="blinking">
+          <div className="overlay overlay-win">
             <img src={YouWin} alt="Winning" />
-            <p>You WIN!!</p>
           </div>
         )}
         {computerScore >= roundsToWin && (
-          <div className="blinking">
+          <div className="overlay overlay-ai-win">
             <img src={AiWin} alt="Winning" />
-            <p className="ai-wins">AI Wins!!</p>
           </div>
         )}
 
         <div>
           <div className='computer-score'>
-            <p>AI SCORE:</p>
+            <h3>AI SCORE:</h3>
             <p> {computerScore}</p> {/* Display scores here */}
             <img
               src={aiChosenImage}
@@ -231,9 +265,9 @@ const RockPaperScissors = () => {
         result={result}
         show={showResult}
       />
-      {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
+      {/* {playerScore >= roundsToWin || computerScore >= roundsToWin ? (
         <button onClick={resetGame} className='play-again'>Play Again</button>
-      ) : null}
+      ) : null} */}
       {/* <p>You chose {playerSelection}, Computer chose {computerSelection}. {result}</p> */}
       {/* <p>Player: {playerScore} | Computer: {computerScore}</p>
       {roundNumber <= maxRounds && (playerScore >= maxRounds || computerScore >= maxRounds) ? (
