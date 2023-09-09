@@ -56,7 +56,7 @@ const RockPaperScissors = () => {
       blinkCounter++; // Increment the blink counter
 
       // Check if it has blinked three times
-      if (blinkCounter === 3) {
+      if (blinkCounter === 6) {
         clearInterval(blinkInterval); // Clear the interval after three blinks
         resetGame(); // Reset the game
       }
@@ -218,19 +218,19 @@ const RockPaperScissors = () => {
 
               <button 
                 onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }} className="game-button">
-                <img src={RockButtonImage} alt="Rock" ></img>
+                <img srcSet={`${RockButtonImage} 320w, ${RockButtonImage} 680w, ${RockButtonImage}   960w, ${RockButtonImage} 1980w`} src={RockButtonImage} alt="Rock" ></img>
               </button>
               <button onClick={() => play('paper')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={PaperButtonImage} alt="Paper" ></img>
+                <img srcSet={`${PaperButtonImage} 320w, ${PaperButtonImage} 680w, ${PaperButtonImage}   960w, ${PaperButtonImage} 1980w`} src={PaperButtonImage} alt="Paper" ></img>
               </button>
               <button onClick={() => play('scissors')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }}>
-                <img src={ScissorsButtonImage} alt="Scissor" ></img>
+                <img srcSet={`${ScissorsButtonImage} 320w, ${ScissorsButtonImage} 680w, ${ScissorsButtonImage}   960w, ${ScissorsButtonImage} 1980w`} src={ScissorsButtonImage} alt="Scissor" ></img>
               </button>
 
             </div>
             {/* Display the player's selected image */}
             {playerSelectedImage && (
-              <img src={playerSelectedImage} alt="Player Selected" ></img>
+              <img srcSet={`${playerSelectedImage} 320w, ${playerSelectedImage} 680w, ${playerSelectedImage}   960w, ${playerSelectedImage} 1980w`} src={playerSelectedImage} alt="Player Selected" ></img>
             )}
           </div>
           <p> Take your pick</p>
@@ -251,9 +251,10 @@ const RockPaperScissors = () => {
             <h3>AI SCORE:</h3>
             <p> {computerScore}</p> {/* Display scores here */}
             <img
+              srcSet={`${aiChosenImage} 320w, ${aiChosenImage} 680w, ${aiChosenImage}   960w, ${aiChosenImage} 1980w`}
               src={aiChosenImage}
               alt="AI Chosen"
-              style={{ width: 'auto', height: 'auto' }}
+              // style={{ width: 'auto', height: 'auto' }}
             />
             <br />
             <p></p>
