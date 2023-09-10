@@ -88,17 +88,17 @@ const RockPaperScissors = () => {
         const roundResult = determineWinner(playerSelection, computerSelection);
         updateScore(roundResult);
         setResult(roundResult);
-        setRoundNumber(roundNumber + 1);
         setIsPlayerTurn(false);
         determineWinner()
-
+        
         setTimeout(() => {
           setIsButtonsVisible(true);
           setAiChosenImage(AiImage);
           setPlayerSelectedImage(null);
           setShowResult(false);
+          setRoundNumber(roundNumber + 1);
         }, 4000);
-
+        
         setTimeout(() => {
           setAiChosenImage(AiImage);
         }, 3000);
