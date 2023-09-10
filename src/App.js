@@ -56,7 +56,7 @@ const RockPaperScissors = () => {
       blinkCounter++; // Increment the blink counter
 
       // Check if it has blinked three times
-      if (blinkCounter === 6) {
+      if (blinkCounter === 5) {
         clearInterval(blinkInterval); // Clear the interval after three blinks
         resetGame(); // Reset the game
       }
