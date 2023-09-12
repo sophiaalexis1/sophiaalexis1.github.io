@@ -237,12 +237,18 @@ const RockPaperScissors = () => {
         </div>
         {playerScore >= roundsToWin && (
           <div className="overlay overlay-win">
-            <img src={YouWin} alt="Winning" />
+            <img 
+            srcSet={`${YouWin} 320w, ${YouWin} 680w, ${YouWin}   960w, ${YouWin} 1980w`}
+            src={YouWin} 
+            alt="Winning" />
           </div>
         )}
         {computerScore >= roundsToWin && (
           <div className="overlay overlay-ai-win">
-            <img src={AiWin} alt="Winning" />
+            <img 
+            srcSet={`${AiWin} 320w, ${AiWin} 680w, ${AiWin}   960w, ${AiWin} 1980w`}
+            src={AiWin} 
+            alt="Winning" />
           </div>
         )}
 
