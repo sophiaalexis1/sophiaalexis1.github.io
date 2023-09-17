@@ -32,6 +32,8 @@ const RockPaperScissors = () => {
   const [showAIWin, setShowAIWin] = useState(false);
   const [radioOption1, setRadioOption1] = useState(false);
   const [radioOption2, setRadioOption2] = useState(true);
+  const [difficultyLevel, setDifficultyLevel] = useState('advanced'); // Default to 'easy'
+
 
   useEffect(() => {
     // Check if the player has won and display "You Win" message
@@ -54,11 +56,14 @@ const RockPaperScissors = () => {
   const handleRadioOption1Change = () => {
     setRadioOption1(true);
     setRadioOption2(false);
+    setDifficultyLevel('easy');
   };
 
   const handleRadioOption2Change = () => {
     setRadioOption1(false);
     setRadioOption2(true);
+    setDifficultyLevel('advanced');
+    console.log("Difficulty level set to 'advanced'");
   };
   
   const startBlinking = () => {
@@ -78,8 +83,15 @@ const RockPaperScissors = () => {
   };
 
   const computerPlay = () => {
-    return choices[Math.floor(Math.random() * choices.length)];
+    if (difficultyLevel === 'advanced') {
+      // For advanced difficulty, return a random choice
+      return choices[Math.floor(Math.random() * choices.length)];
+    }
+    
+    // Default to 'easy' mode where the computer always selects 'paper'
+    return 'paper';
   };
+  
 
   const [aiChosenImage, setAiChosenImage] = useState(AiImage);
   const [isButtonsVisible, setIsButtonsVisible] = useState(true);
