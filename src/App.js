@@ -8,6 +8,7 @@ import GameRules from './Components/GameRules/GameRules';
 import YouWin from './Assets/YouWin.png';
 import AiWin from './Assets/AiWins.png';
 import ShowResult from './Components/ShowResult/ShowResult';
+import RadioButton from './Components/RadioButton/RadioButton';
 import './App.css';
 
 const choices = ['rock', 'paper', 'scissors'];
@@ -28,6 +29,8 @@ const RockPaperScissors = () => {
   const [blinkCount, setBlinkCount] = useState(0); // Add a state variable for blink count
   const [showYouWin, setShowYouWin] = useState(false);
   const [showAIWin, setShowAIWin] = useState(false);
+  const [radioOption1, setRadioOption1] = useState(false);
+  const [radioOption2, setRadioOption2] = useState(false);
 
   useEffect(() => {
     // Check if the player has won and display "You Win" message
@@ -47,6 +50,16 @@ const RockPaperScissors = () => {
     }
   }, [playerScore, computerScore]);
 
+  const handleRadioOption1Change = () => {
+    setRadioOption1(true);
+    setRadioOption2(false);
+  };
+
+  const handleRadioOption2Change = () => {
+    setRadioOption1(false);
+    setRadioOption2(true);
+  };
+  
   const startBlinking = () => {
     let blinkCounter = 0; // Initialize a counter for blinks
 
@@ -90,7 +103,7 @@ const RockPaperScissors = () => {
         setResult(roundResult);
         setIsPlayerTurn(false);
         determineWinner()
-        
+
         setTimeout(() => {
           setIsButtonsVisible(true);
           setAiChosenImage(AiImage);
@@ -98,11 +111,11 @@ const RockPaperScissors = () => {
           setShowResult(false);
           setRoundNumber(roundNumber + 1);
         }, 4000);
-        
+
         setTimeout(() => {
           setAiChosenImage(AiImage);
         }, 3000);
-        
+
         setShowResult(true);
       }, 1000);
     }
@@ -216,7 +229,7 @@ const RockPaperScissors = () => {
           <div className='choice-container'>
             <div className='player-choice'>
 
-              <button 
+              <button
                 onClick={() => play('rock')} disabled={disableButtons()} style={{ display: isButtonsVisible ? 'block' : 'none' }} className="game-button">
                 <img srcSet={`${RockButtonImage} 320w, ${RockButtonImage} 680w, ${RockButtonImage}   960w, ${RockButtonImage} 1980w`} src={RockButtonImage} alt="Rock" ></img>
               </button>
@@ -237,18 +250,18 @@ const RockPaperScissors = () => {
         </div>
         {playerScore >= roundsToWin && (
           <div className="overlay overlay-win">
-            <img 
-            srcSet={`${YouWin} 320w, ${YouWin} 680w, ${YouWin}   960w, ${YouWin} 1980w`}
-            src={YouWin} 
-            alt="Winning" />
+            <img
+              srcSet={`${YouWin} 320w, ${YouWin} 680w, ${YouWin}   960w, ${YouWin} 1980w`}
+              src={YouWin}
+              alt="Winning" />
           </div>
         )}
         {computerScore >= roundsToWin && (
           <div className="overlay overlay-ai-win">
-            <img 
-            srcSet={`${AiWin} 320w, ${AiWin} 680w, ${AiWin}   960w, ${AiWin} 1980w`}
-            src={AiWin} 
-            alt="Winning" />
+            <img
+              srcSet={`${AiWin} 320w, ${AiWin} 680w, ${AiWin}   960w, ${AiWin} 1980w`}
+              src={AiWin}
+              alt="Winning" />
           </div>
         )}
 
@@ -260,14 +273,26 @@ const RockPaperScissors = () => {
               srcSet={`${aiChosenImage} 320w, ${aiChosenImage} 680w, ${aiChosenImage}   960w, ${aiChosenImage} 1980w`}
               src={aiChosenImage}
               alt="AI Chosen"
-              // style={{ width: 'auto', height: 'auto' }}
+            // style={{ width: 'auto', height: 'auto' }}
             />
+            <div className='radio-buttons'>
+            <RadioButton
+              label='Easy'
+              checked={radioOption1}
+              onChange={handleRadioOption1Change}
+            />
+            <RadioButton
+              label='Hard'
+              checked={radioOption2}
+              onChange={handleRadioOption2Change}
+            />
+            </div>
             <br />
             <p></p>
           </div>
         </div>
       </div>
-      <ShowResult 
+      <ShowResult
         playerSelection={playerSelection}
         computerSelection={computerSelection}
         result={result}
