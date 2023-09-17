@@ -65,7 +65,7 @@ const RockPaperScissors = () => {
     setDifficultyLevel('advanced');
     console.log("Difficulty level set to 'advanced'");
   };
-  
+
   const startBlinking = () => {
     let blinkCounter = 0; // Initialize a counter for blinks
 
@@ -77,7 +77,10 @@ const RockPaperScissors = () => {
       // Check if it has blinked three times
       if (blinkCounter === 5) {
         clearInterval(blinkInterval); // Clear the interval after three blinks
-        resetGame(); // Reset the game
+        // Delay the resetGame function call by 1 second
+        setTimeout(() => {
+          resetGame(); // Reset the game
+        }, 3000);
       }
     }, 1000); // Blink every 1000 milliseconds (1 second)
   };
@@ -87,11 +90,11 @@ const RockPaperScissors = () => {
       // For advanced difficulty, return a random choice
       return choices[Math.floor(Math.random() * choices.length)];
     }
-    
+
     // Default to 'easy' mode where the computer always selects 'paper'
     return 'paper';
   };
-  
+
 
   const [aiChosenImage, setAiChosenImage] = useState(AiImage);
   const [isButtonsVisible, setIsButtonsVisible] = useState(true);
@@ -289,16 +292,16 @@ const RockPaperScissors = () => {
             // style={{ width: 'auto', height: 'auto' }}
             />
             <div className='radio-buttons'>
-            <RadioButton1
-              label='Easy'
-              checked={radioOption1}
-              onChange={handleRadioOption1Change}
-            />
-            <RadioButton
-              label='Advanced'
-              checked={radioOption2}
-              onChange={handleRadioOption2Change}
-            />
+              <RadioButton1
+                label='Easy'
+                checked={radioOption1}
+                onChange={handleRadioOption1Change}
+              />
+              <RadioButton
+                label='Advanced'
+                checked={radioOption2}
+                onChange={handleRadioOption2Change}
+              />
             </div>
             <br />
             <p></p>
