@@ -204,3 +204,9 @@ button {
     width: auto; /* Adjust the width for smaller screens */
   }
 }
+
+.radio-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  color:black;
+}

@@ -1,0 +1,12 @@
+.radio-label {
+    display: flex;
+    align-items: center;
+    order: 2; /* Controls the order, label to the left of input */
+    margin-right: 10px; /* Adjust spacing between label and input */
+  }
+  
+  .radio-input {
+    order: 1; /* Controls the order, input to the right of label */
+    margin-right: 5px; /* Adjust spacing between label and input */
+  }
+  

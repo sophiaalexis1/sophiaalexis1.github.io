@@ -10,6 +10,7 @@ import AiWin from './Assets/AiWins.png';
 import ShowResult from './Components/ShowResult/ShowResult';
 import RadioButton from './Components/RadioButton/RadioButton';
 import './App.css';
+import RadioButton1 from './Components/RadioButton1/RadioButton1';
 
 const choices = ['rock', 'paper', 'scissors'];
 const roundsToWin = 3;
@@ -30,7 +31,7 @@ const RockPaperScissors = () => {
   const [showYouWin, setShowYouWin] = useState(false);
   const [showAIWin, setShowAIWin] = useState(false);
   const [radioOption1, setRadioOption1] = useState(false);
-  const [radioOption2, setRadioOption2] = useState(false);
+  const [radioOption2, setRadioOption2] = useState(true);
 
   useEffect(() => {
     // Check if the player has won and display "You Win" message
@@ -276,13 +277,13 @@ const RockPaperScissors = () => {
             // style={{ width: 'auto', height: 'auto' }}
             />
             <div className='radio-buttons'>
-            <RadioButton
+            <RadioButton1
               label='Easy'
               checked={radioOption1}
               onChange={handleRadioOption1Change}
             />
             <RadioButton
-              label='Hard'
+              label='Advanced'
               checked={radioOption2}
               onChange={handleRadioOption2Change}
             />
