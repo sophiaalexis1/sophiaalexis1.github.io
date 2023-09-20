@@ -11,6 +11,7 @@ import ShowResult from './Components/ShowResult/ShowResult';
 import RadioButton from './Components/RadioButton/RadioButton';
 import './App.css';
 import RadioButton1 from './Components/RadioButton1/RadioButton1';
+import WinningPointsSelector from './Components/WinningPointsSelector/WinningPointsSelector';
 
 const choices = ['rock', 'paper', 'scissors'];
 const roundsToWin = 3;
@@ -33,7 +34,11 @@ const RockPaperScissors = () => {
   const [radioOption1, setRadioOption1] = useState(false);
   const [radioOption2, setRadioOption2] = useState(true);
   const [difficultyLevel, setDifficultyLevel] = useState('advanced'); // Default to 'easy'
+  const [roundsToWin, setRoundsToWin] = useState(3);
 
+  const handlePointsSelect = (selectedPoints) => {
+    setRoundsToWin(selectedPoints);
+  };
 
   useEffect(() => {
     // Check if the player has won and display "You Win" message
@@ -235,6 +240,7 @@ const RockPaperScissors = () => {
         <h1>Play Rock Paper Scissors Against AI</h1>
         <h2 className='round'>ROUND {roundNumber} </h2>
         {/* {isPlayerTurn && <p>Take your pick:</p>} */}
+        {/* <WinningPointsSelector onSelect={handlePointsSelect} /> */}
       </div>
       <div className='game-container'>
         <div className='scores-container'>
