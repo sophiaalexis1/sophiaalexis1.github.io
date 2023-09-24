@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.76221abf.css",
-    "main.js": "/static/js/main.6b7f4253.js",
+    "main.js": "/static/js/main.dd9cf0cc.js",
     "static/js/787.15230f2c.chunk.js": "/static/js/787.15230f2c.chunk.js",
     "static/media/YouWin.png": "/static/media/YouWin.30c8b34bcf386161fee9.png",
     "static/media/AiWins.png": "/static/media/AiWins.6855b9cdb45ea826c573.png",
@@ -12,11 +12,11 @@
     "static/media/Game-Rock.jpg": "/static/media/Game-Rock.6b80715f49f512ee4fdc.jpg",
     "index.html": "/index.html",
     "main.76221abf.css.map": "/static/css/main.76221abf.css.map",
-    "main.6b7f4253.js.map": "/static/js/main.6b7f4253.js.map",
+    "main.dd9cf0cc.js.map": "/static/js/main.dd9cf0cc.js.map",
     "787.15230f2c.chunk.js.map": "/static/js/787.15230f2c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.76221abf.css",
-    "static/js/main.6b7f4253.js"
+    "static/js/main.dd9cf0cc.js"
   ]
 }
