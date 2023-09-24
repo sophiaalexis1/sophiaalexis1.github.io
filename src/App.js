@@ -213,6 +213,9 @@ const RockPaperScissors = () => {
     setRoundNumber(1);
     setPlayerWins(false);
     setComputerWins(false);
+    setRadioOption1(false);
+    setRadioOption2(true);
+    setDifficultyLevel('advanced');
   };
 
   const disableButtons = () => {
