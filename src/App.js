@@ -41,7 +41,6 @@ const RockPaperScissors = () => {
   };
 
   useEffect(() => {
-    // Check if the player has won and display "You Win" message
     if (playerScore >= roundsToWin) {
       setShowYouWin(true);
       startBlinking();
@@ -49,7 +48,6 @@ const RockPaperScissors = () => {
       setShowYouWin(false);
     }
 
-    // Check if the computer has won and display "AI Wins" message
     if (computerScore >= roundsToWin) {
       setShowAIWin(true);
       startBlinking();
@@ -72,15 +70,13 @@ const RockPaperScissors = () => {
   };
 
   const startBlinking = () => {
-    let blinkCounter = 0; // Initialize a counter for blinks
+    let blinkCounter = 0; 
 
-    // Start blinking by setting an interval
     const blinkInterval = setInterval(() => {
       setBlinkCount((prevCount) => prevCount + 1);
-      blinkCounter++; // Increment the blink counter
+      blinkCounter++; 
 
-      // Check if it has blinked three times
-      if (blinkCounter === 5) {
+      if (blinkCounter === 4) {
         clearInterval(blinkInterval); // Clear the interval after three blinks
         // Delay the resetGame function call by 1 second
         setTimeout(() => {
